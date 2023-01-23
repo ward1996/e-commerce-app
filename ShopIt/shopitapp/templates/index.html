@@ -1,0 +1,54 @@
+{% extends 'home.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<div class="p-5 text-center bg-light">
+  <h1 class="mb-3">ShopIt</h1>
+  <h4 class="mb-4">Or Don't...</h4>
+  <a class="btn btn-primary btn-lg" href="{% url 'login' %}"
+    role="button">Login</a>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+
+    {%for it in items%}
+    <div class="col-md">
+
+      <!-- Card -->
+      <div class="card">
+        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          <img src="{{ it.item_image }}" class="img-fluid" />
+          <a href="{% url 'item_detail' it.id %}">
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ it.item_name }}</h5>
+          <p class="card-text">{{ item.item_description}}</p>
+          <a href="" class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
+      <!-- Card -->
+
+    </div>
+
+    {% endfor%}
+
+   
+
+
+</body>
+</html>
+
+{% endblock content %}
